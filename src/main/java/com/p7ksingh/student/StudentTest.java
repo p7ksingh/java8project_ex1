@@ -1,8 +1,11 @@
 package com.p7ksingh.student;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,7 +39,15 @@ public class StudentTest {
         // Q8- Find the list of students whose rank is in between 50 and 100
         // method8(list);
         // Q9- Find the average age of male and female students
-        method9(list);
+        // method9(list);
+        // Q10- Find the department who is having maximum number of students
+        method10(list);
+    }
+
+    private static void method10(List<Student> list) {
+        Entry<String, Long> entry = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
+                Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).get();
+        System.out.println(entry);
     }
 
     private static void method9(List<Student> list) {
