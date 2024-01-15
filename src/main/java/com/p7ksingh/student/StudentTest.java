@@ -34,7 +34,15 @@ public class StudentTest {
         // Q7-Find the list of students whose age is less than 30
         // method7(list);
         // Q8- Find the list of students whose rank is in between 50 and 100
-        method8(list);
+        // method8(list);
+        // Q9- Find the average age of male and female students
+        method9(list);
+    }
+
+    private static void method9(List<Student> list) {
+        Map<String, Double> collect = list.stream()
+                .collect(Collectors.groupingBy(Student::getGender, Collectors.averagingDouble(Student::getAge)));
+        System.out.println(collect);
     }
 
     private static void method8(List<Student> list) {
