@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StudentTest {
     public static void main(String[] args) {
@@ -29,8 +30,22 @@ public class StudentTest {
         // Q5- Find all departments names
         // method5(list);
         // Q6- Find the count of student in each department
-       // method6(list);
-        // QFind the list of students whose age is less than 30
+        // method6(list);
+        // Q7-Find the list of students whose age is less than 30
+        // method7(list);
+        // Q8- Find the list of students whose rank is in between 50 and 100
+        method8(list);
+    }
+
+    private static void method8(List<Student> list) {
+        list.stream().filter(dt -> dt.getRank() > 50 && dt.getRank() < 100)
+                .collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+    private static void method7(List<Student> list) {
+        list.stream().filter(dt -> dt.getAge() < 30).collect(Collectors.toList()).forEach(System.out::println);
+
     }
 
     private static void method6(List<Student> list) {
